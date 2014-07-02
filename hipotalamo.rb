@@ -1,25 +1,36 @@
-require 'rubygems'
-
-require 'memcache'
-
-starling = MemCache.new 'localhost:22122'
-
-starling.set 'fila', 'qualquer objeto'
+#This is the first eletron passing
 
 
 
+t1 = Thread.new {
+  p t1
+
+}
+ 
+t2 = Thread.new{
+  p t2
+
+}
+ 
+t1.join()
+t2.join()
 
 
-objeto_fila = starling.get 'fila'
-if !objeto_fila.nil?
-  puts 'recuperado da fila:' + objeto_fila
+
+class Hipotalamo
+	def initializations
+		#Iniciate console
+		consoleT = Thread.new {
+ 			p 'a'
+		}
+		consoleT.join()
+	end
+
 end
 
-objeto_fila = starling.get 'fila'
-if !objeto_fila.nil?
-  puts 'recuperado da fila:' + objeto_fila
-else
-  p 'nao ta aqui nao'
-end
 
 
+
+#Inicialize the brain functions
+brain = Hipotalamo.new
+brain.initializations

@@ -1,0 +1,2 @@
+class Synapsis
+	def initialize
