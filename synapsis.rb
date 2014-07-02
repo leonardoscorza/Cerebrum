@@ -2,7 +2,6 @@ load 'primitive_sense.rb'
 
 class Synapsis
   @@acessSense = ''
-  @@synapseT   = ''
 
 	def initialize
     @@acessSense = PrimitiveSense.new
@@ -19,12 +18,11 @@ class Synapsis
       unless stimuli.nil?
 
         #Call a action for the stimuli
-        @@synapseT =  Thread.new {
-          responseSynapsis = pons(stimuli)
+        Thread.new {
+          responseSynapsis = temporalLobe(stimuli)
         }
 
       end
-        @@synapseT.join()
 
     end
 
@@ -37,6 +35,10 @@ class Synapsis
 
   #Execution stimulis part
   def cerebellum
+  end
+
+  #Reation programs part
+  def amygdala
   end
 
 end
