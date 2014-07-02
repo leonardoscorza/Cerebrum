@@ -1,25 +1,20 @@
 require 'rubygems'
-
-require 'memcache'
+require 'redis'
 
 class PrimitiveSense
-	@@starling = ""
+	@@requeue = ""
 
 	def initialize
-		@@starling = MemCache.new 'localhost:22122'
+		@@requeue = Redis.new
 	end
 
-	def listen(about)
-		objeto_fila = @@starling.get(about)
+	#Listen for shell name (!)
+	def listen
+		@@requeue.rpop('!')
 	end
 
-	def speak(about, what)
-		@@starling.set(about, what)
+	#expressed their wishes (what) to member (who)
+	def speak(who, what)
+		@@requeue.lpush(who, what)
 	end
 end
-
-acessSense = PrimitiveSense.new
-
-acessSense.speak("teste", "testando")
-
-p acessSense.listen("teste")
