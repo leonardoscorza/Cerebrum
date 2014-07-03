@@ -12,14 +12,14 @@ class Synapsis
 	def somatosensation
 		
     loop do
-      stimuli = @@acessSense.listen()
+      synapse = @@acessSense.listen()
 
       #Listen the queue of stimuli
-      unless stimuli.nil?
+      unless synapse.nil?
 
         #Call a action for the stimuli
         Thread.new {
-          responseSynapsis = temporalLobe(stimuli)
+          temporalLobe(synapse)
         }
 
       end
@@ -30,7 +30,15 @@ class Synapsis
 
   #Interpret language stimulis part
 	def temporalLobe(synapse)
-    p 'a'
+    #Process the synapse
+    synapseArray = synapse.split(' ')
+
+    #Test to confirm that is a think
+    unless synapseArray.shift == 'THINK'
+      return "Not is a think"
+    end
+
+
 	end
 
   #Execution stimulis part

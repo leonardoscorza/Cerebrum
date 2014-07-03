@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'memcache-client'
+gem 'mongo'
+gem 'mongo_ext'
 gem 'redis'
 
