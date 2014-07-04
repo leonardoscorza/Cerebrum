@@ -1,10 +1,14 @@
 load 'primitive_sense.rb'
+load 'memory.rb'
 
 class Synapsis
   @@acessSense = ''
+  @@memory     = ''
 
 	def initialize
     @@acessSense = PrimitiveSense.new
+    @@memory     = Memory.new('brainMemory')
+
 		somatosensation()
 	end
 
@@ -37,6 +41,9 @@ class Synapsis
     unless synapseArray.shift == 'THINK'
       return "Not is a think"
     end
+
+    #Try remember of the sense/action
+    p @@memory.remember('knowledge', synapseArray.shift)
 
 
 	end
