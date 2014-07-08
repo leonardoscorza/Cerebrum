@@ -1,5 +1,7 @@
 load 'primitive_sense.rb'
 load 'memory.rb'
+load 'hippocampus.rb'
+
 
 class Synapsis
   @@acessSense = ''
@@ -23,7 +25,7 @@ class Synapsis
 
         #Call a action for the stimuli
         Thread.new {
-          temporalLobe(synapse)
+          p temporalLobe(synapse)
         }
 
       end
@@ -42,8 +44,15 @@ class Synapsis
       return "Not is a think"
     end
 
+
     #Try remember of the sense/action
-    p @@memory.remember('knowledge', synapseArray.shift)
+    knowMethods = @@memory.remember('know', {:know => synapseArray.shift } )
+    unless(knowMethods)
+      return "I do not know or forgot how to do this. If you want I can tell you about the things I know. Ask me about my knowledge [know]."
+    else
+      p 'knowMethods' , knowMethods
+    end
+
 
 
 	end

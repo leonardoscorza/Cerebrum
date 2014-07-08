@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'redis'
 
+
 class PrimitiveSense
 	@@requeue = ""
 

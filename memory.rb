@@ -12,14 +12,38 @@ class Memory
 
 	def burn(memoryGroup, information)
 		#Brun a new memory
-	 	group = @@db.collection(memoryGroup)
-	 	group.insert(information)
+	 	begin
+		 	group = @@db.collection(memoryGroup)
+		 	group.insert(information)
+		 	#I learn
+		 	true
+	 	rescue
+	 		#I can't learn this
+	 		nil
+	 	end
 	end
 
 	def remember(memoryGroup, partialInformation)
 		#Remember any thing
-		group = @@db.collection(memoryGroup)
-		group.find(partialInformation).to_a
+		begin
+			group = @@db.collection(memoryGroup)
+			group.find(partialInformation).to_a
+		rescue
+			#I can't remember
+			nil
+		end
+	end
+
+	#Forgot a information
+	def forgot(memoryGroup, partialInformation)
+		#Forgot any thing
+		begin
+			group = @@db.collection(memoryGroup)
+			group.remove(partialInformation)
+		rescue
+			#I can't remember for this i can't forgot
+			nil
+		end
 	end
 
 end
