@@ -1,6 +1,11 @@
 load 'primitive_sense.rb'
-load 'memory.rb'
 load 'hippocampus.rb'
+
+#Load all sense files
+Dir["./senses/*.rb"].each {|file| require file }
+#Load all arm's
+Dir["./arm/*.rb"].each   {|file| require file }
+
 
 
 class Synapsis
@@ -51,6 +56,14 @@ class Synapsis
       return "I do not know or forgot how to do this. If you want I can tell you about the things I know. Ask me about my knowledge [know]."
     else
       p 'knowMethods' , knowMethods
+      #Verify if the method is right
+      #Verify if the params are right
+      $know.help
+      #If have a error call the help method off the sense/action
+
+      #Else have a error call the sense/action
+
+
     end
 
 
