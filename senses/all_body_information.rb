@@ -2,6 +2,15 @@ load './arm/memory.rb'
 
 
 class AllBodyInformation
+  @@memory     = ''
+
+
+  def initializte
+    #Create relation on memory of the knowledge
+    @@memory     = Memory.new('brainMemory')
+    @@memory.burn('know',"INSERIR AQUI")
+  end
+
   def get(client)
 
     #Get the informations

@@ -58,9 +58,8 @@ class Synapsis
       p 'knowMethods' , knowMethods
       #Verify if the method is right
       #Verify if the params are right
-      $know.help
       #If have a error call the help method off the sense/action
-
+      
       #Else have a error call the sense/action
 
 
