@@ -8,7 +8,7 @@ class AllBodyInformation
   def initializte
     #Create relation on memory of the knowledge
     @@memory     = Memory.new('brainMemory')
-    @@memory.burn('know',"INSERIR AQUI")
+    @@memory.burn('knowledge',{:know => 'help', :numMethods => 1, :methods => {:method => {'name' => '', :numParam => 0}}})
   end
 
   def get(client)

@@ -1,3 +1,5 @@
+require 'json'
+
 load 'primitive_sense.rb'
 load 'hippocampus.rb'
 
@@ -51,12 +53,17 @@ class Synapsis
 
 
     #Try remember of the sense/action
-    knowMethods = @@memory.remember('know', {:know => synapseArray.shift } )
-    unless(knowMethods)
+    knowMethods = @@memory.remember('knowledge', {:know => synapseArray.shift } )
+    
+    if(knowMethods == [])
       return "I do not know or forgot how to do this. If you want I can tell you about the things I know. Ask me about my knowledge [know]."
     else
-      p 'knowMethods' , knowMethods
-      #Verify if the method is right
+      p knowMethods
+      #Verify if the method is right      
+      p knowMethods['methods']
+
+      # if ( == synapseArray.shift)
+
       #Verify if the params are right
       #If have a error call the help method off the sense/action
       

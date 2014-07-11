@@ -1,5 +1,5 @@
 require 'mongo'
-
+require 'json'
 
 class Memory
 	@@db = ''
@@ -26,8 +26,12 @@ class Memory
 	def remember(memoryGroup, partialInformation)
 		#Remember any thing
 		begin
-			group = @@db.collection(memoryGroup)
-			group.find(partialInformation).to_a
+			group  = @@db.collection(memoryGroup)
+			cursor = group.find(partialInformation)
+			answer = {}
+			cursor.map { |h| answer = h }
+			answer
+			"aaa"
 		rescue
 			#I can't remember
 			nil
