@@ -32,7 +32,7 @@ class Synapsis
 
         #Call a action for the stimuli
         Thread.new {
-          p temporalLobe(synapse)
+          temporalLobe(synapse)
         }
 
       end
@@ -58,10 +58,9 @@ class Synapsis
     if(knowMethods == [])
       return "I do not know or forgot how to do this. If you want I can tell you about the things I know. Ask me about my knowledge [know]."
     else
-      p knowMethods
+      # p knowMethods
       #Verify if the method is right      
       p knowMethods['methods']
-
       # if ( == synapseArray.shift)
 
       #Verify if the params are right

@@ -1,4 +1,4 @@
-load 'memory.rb'
+load 'arm/memory.rb'
 
 
 class Hippocampus
