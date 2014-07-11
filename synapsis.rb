@@ -60,7 +60,7 @@ class Synapsis
     else
       # p knowMethods
       #Verify if the method is right      
-      p knowMethods['methods']
+      p knowMethods['methods']['method2']
       # if ( == synapseArray.shift)
 
       #Verify if the params are right
