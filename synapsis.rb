@@ -45,6 +45,8 @@ class Synapsis
 	def temporalLobe(synapse)
     #Process the synapse
     synapseArray = synapse.split(' ')
+    #Save the returns of methods to use in others
+    returnsOfMethods = []
 
     #Test to confirm that is a think
     unless synapseArray.shift == 'THINK'
@@ -58,15 +60,44 @@ class Synapsis
     if(knowMethods == [])
       return "I do not know or forgot how to do this. If you want I can tell you about the things I know. Ask me about my knowledge [know]."
     else
-      # p knowMethods
-      #Verify if the method is right      
-      p knowMethods['methods']['method2']
-      # if ( == synapseArray.shift)
 
-      #Verify if the params are right
-      #If have a error call the help method off the sense/action
+      #Case all right, call the execution     
+      method = synapseArray.shift
+      i = 0
+      while i != knowMethods['numMethods'] do
+        i = i + 1
+        methodCurrency = 'method' + i.to_s
+
+        #Verify if is the same method
+        if knowMethods['methods'][methodCurrency]['name'] == method
+          #Verify if the params are right
+          j = 0
+          arrayParameters = []
+          while j != knowMethods['methods'][methodCurrency]['numParam'] do
+            arrayParameters.push(synapseArray.shift)
+
+            if  arrayParameters[j] == "AND" or arrayParameters[j] == "CONECT" or arrayParameters[j] == nil
+              #Call help method
+              p "call help method num param wrong"
+              self.cerebellum(knowMethods['know'],'help')
+              return ""
+            end
+            j = j + 1
+
+          end
+
+          #Verifify if have a cross parameter, case have, do the substituition
+
+
+          #If the params are okay, call the execution process
+          p "Are all okay, call the execution"
+          self.cerebellum(knowMethods['know'], knowMethods['methods'][methodCurrency]['name'], arrayParameters)
+        end
+
+      end
       
-      #Else have a error call the sense/action
+      #Not find the method, call the default help method
+      p "Nao encontrou o metodo"
 
 
     end
@@ -76,7 +107,8 @@ class Synapsis
 	end
 
   #Execution stimulis part
-  def cerebellum
+  def cerebellum(know, method, param='')
+    p "execution", know, method, param, "end"
   end
 
   #Reation programs part
