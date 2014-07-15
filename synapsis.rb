@@ -9,7 +9,6 @@ Dir["./senses/*.rb"].each {|file| require file }
 Dir["./arm/*.rb"].each   {|file| require file }
 
 
-
 class Synapsis
   @@acessSense = ''
   @@memory     = ''
@@ -68,6 +67,9 @@ class Synapsis
         i = i + 1
         methodCurrency = 'method' + i.to_s
 
+        p i, knowMethods['numMethods'], methodCurrency
+        p "here are the methods", knowMethods['methods'][methodCurrency]['name'] , method
+
         #Verify if is the same method
         if knowMethods['methods'][methodCurrency]['name'] == method
           #Verify if the params are right
@@ -80,6 +82,8 @@ class Synapsis
               #Call help method
               p "call help method num param wrong"
               self.cerebellum(knowMethods['know'],'help')
+              
+              #In the multiples commands DELETE the next command
               return ""
             end
             j = j + 1
@@ -91,7 +95,8 @@ class Synapsis
 
           #If the params are okay, call the execution process
           p "Are all okay, call the execution"
-          self.cerebellum(knowMethods['know'], knowMethods['methods'][methodCurrency]['name'], arrayParameters)
+          return self.cerebellum(knowMethods['know'], knowMethods['methods'][methodCurrency]['name'], arrayParameters)
+          
         end
 
       end
@@ -108,7 +113,15 @@ class Synapsis
 
   #Execution stimulis part
   def cerebellum(know, method, param='')
-    p "execution", know, method, param, "end"
+    action = $know[know]
+    
+    #Call the method
+    begin
+      action.send(method)
+    #Call the help method in problem case  
+    rescue
+      action.send('help')
+    end
   end
 
   #Reation programs part

@@ -1,5 +1,7 @@
 load 'arm/memory.rb'
 
+$know = {}
+
 
 class Hippocampus
 	@@memory     = Memory.new('brainMemory')
