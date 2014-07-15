@@ -9,8 +9,8 @@ class AllBodyInformation
     #Create relation on memory of the knowledge
     $memory     = Memory.new('brainMemory')
 
+    #Verification of existent know in the brain
     exist = $memory.remember('knowledge', {:know => 'know' } )
-    p exist
     if exist == {}
       $memory.burn('knowledge',{:know => 'know', :numMethods => 2, :methods => {:method1 => {'name' => 'help', :numParam => 0},:method2 => {'name' => 'helpDois', :numParam => 0}}})
     end
@@ -21,8 +21,6 @@ class AllBodyInformation
 
     #Get the informations
     knowInformations = $memory.rememberAll('knowledge')
-   
-
     #Mount the html case web
     if client == 'web'
       'teste'
