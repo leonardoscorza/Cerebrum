@@ -37,6 +37,20 @@ class Memory
 		end
 	end
 
+	def rememberAll(memoryGroup)
+		#Remember any thing
+		begin
+			group  = @@db.collection(memoryGroup)
+			cursor = group.find({})
+			answer = {}
+			cursor.map { |h| answer = h }
+		rescue
+			#I can't remember
+			nil
+		end
+	end
+
+
 	#Forgot a information
 	def forgot(memoryGroup, partialInformation)
 		#Forgot any thing

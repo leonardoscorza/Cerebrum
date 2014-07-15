@@ -2,20 +2,26 @@ load './arm/memory.rb'
 
 
 class AllBodyInformation
-  @@memory     = ''
+  $memory     = ''
 
 
-  def initializate
+  def initialize
     #Create relation on memory of the knowledge
-    @@memory     = Memory.new('brainMemory')
-    @@memory.burn('knowledge',{:know => 'know', :numMethods => 2, :methods => {:method1 => {'name' => 'help', :numParam => 0}}})
+    $memory     = Memory.new('brainMemory')
+
+    exist = $memory.remember('knowledge', {:know => 'know' } )
+    p exist
+    if exist == {}
+      $memory.burn('knowledge',{:know => 'know', :numMethods => 2, :methods => {:method1 => {'name' => 'help', :numParam => 0},:method2 => {'name' => 'helpDois', :numParam => 0}}})
+    end
+
   end
 
   def get(client)
 
     #Get the informations
-    knowInformations = @@memory.remember('knowledge', {:know => synapseArray.shift } )
-
+    knowInformations = $memory.rememberAll('knowledge')
+   
 
     #Mount the html case web
     if client == 'web'
@@ -24,12 +30,13 @@ class AllBodyInformation
     else #console
       knowInformations
     end
-    
-    
   end
 
-  def help
-    self.get('console')
+
+  def help(client)
+    response = self.get(client)
+    $acessSense.speak('console',response.to_s)
+    response
   end
 
 

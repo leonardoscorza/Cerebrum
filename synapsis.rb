@@ -10,11 +10,12 @@ Dir["./arm/*.rb"].each   {|file| require file }
 
 
 class Synapsis
-  @@acessSense = ''
+  $acessSense = ''
   @@memory     = ''
+  @@client       = ''
 
 	def initialize
-    @@acessSense = PrimitiveSense.new
+    $acessSense = PrimitiveSense.new
     @@memory     = Memory.new('brainMemory')
 
 		somatosensation()
@@ -24,7 +25,7 @@ class Synapsis
 	def somatosensation
 		
     loop do
-      synapse = @@acessSense.listen()
+      synapse = $acessSense.listen()
 
       #Listen the queue of stimuli
       unless synapse.nil?
@@ -47,10 +48,20 @@ class Synapsis
     #Save the returns of methods to use in others
     returnsOfMethods = []
 
+    
+    #Try catch the solicitation client
+    begin 
+      @@client = synapseArray.shift
+    rescue 
+      return "No client"
+    end
+
     #Test to confirm that is a think
     unless synapseArray.shift == 'THINK'
       return "Not is a think"
     end
+
+    
 
 
     #Try remember of the sense/action
@@ -66,9 +77,6 @@ class Synapsis
       while i != knowMethods['numMethods'] do
         i = i + 1
         methodCurrency = 'method' + i.to_s
-
-        p i, knowMethods['numMethods'], methodCurrency
-        p "here are the methods", knowMethods['methods'][methodCurrency]['name'] , method
 
         #Verify if is the same method
         if knowMethods['methods'][methodCurrency]['name'] == method
@@ -112,12 +120,20 @@ class Synapsis
 	end
 
   #Execution stimulis part
-  def cerebellum(know, method, param='')
+  def cerebellum(know, method, param=nil)
+    #Create the action acess
     action = $know[know]
     
+
     #Call the method
     begin
-      action.send(method)
+      if param != [] 
+        p 'param'
+        action.send(method, param, @@client)
+      else
+        p 'no param'
+        action.send(method, @@client)
+      end
     #Call the help method in problem case  
     rescue
       action.send('help')
