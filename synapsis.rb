@@ -64,7 +64,7 @@ class Synapsis
     
 
 
-    #Try remember of the sense/action
+    #Try remember yourself of the sense or action
     knowMethods = @@memory.remember('knowledge', {:know => synapseArray.shift } )
     
     if(knowMethods == [])
