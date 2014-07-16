@@ -23,7 +23,7 @@ class Synapsis
 
   #Monitoring sensations parts
 	def somatosensation
-		
+
     loop do
       synapse = $acessSense.listen()
 
@@ -48,11 +48,11 @@ class Synapsis
     #Save the returns of methods to use in others
     returnsOfMethods = []
 
-    
+
     #Try catch the solicitation client
-    begin 
+    begin
       @@client = synapseArray.shift
-    rescue 
+    rescue
       return "No client"
     end
 
@@ -61,17 +61,19 @@ class Synapsis
       return "Not is a think"
     end
 
-    
+
 
 
     #Try remember yourself of the sense or action
     knowMethods = @@memory.remember('knowledge', {:know => synapseArray.shift } )
-    
+
     if(knowMethods == [])
       return "I do not know or forgot how to do this. If you want I can tell you about the things I know. Ask me about my knowledge [know]."
     else
 
-      #Case all right, call the execution     
+
+
+      #Case all right, call the execution
       method = synapseArray.shift
       i = 0
       while i != knowMethods['numMethods'] do
@@ -90,7 +92,7 @@ class Synapsis
               #Call help method
               p "call help method num param wrong"
               self.cerebellum(knowMethods['know'],'help')
-              
+
               #In the multiples commands DELETE the next command
               return ""
             end
@@ -102,13 +104,13 @@ class Synapsis
 
 
           #If the params are okay, call the execution process
-          p "Are all okay, call the execution"
+          p "Are all okay, call the execution..."
           return self.cerebellum(knowMethods['know'], knowMethods['methods'][methodCurrency]['name'], arrayParameters)
-          
+
         end
 
       end
-      
+
       #Not find the method, call the default help method
       p "Nao encontrou o metodo"
 
@@ -123,18 +125,18 @@ class Synapsis
   def cerebellum(know, method, param=nil)
     #Create the action acess
     action = $know[know]
-    
 
     #Call the method
     begin
-      if param != [] 
-        p 'param'
+      if param != []
+        p 'param', method, param, @@client, action
+
         action.send(method, param, @@client)
       else
         p 'no param'
         action.send(method, @@client)
       end
-    #Call the help method in problem case  
+    #Call the help method in problem case
     rescue
       action.send('help')
     end

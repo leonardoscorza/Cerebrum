@@ -11,37 +11,44 @@ class SentenceSave
     #Verification of existent know in the brain
     exist = $memory.remember('knowledge', {:know => 'sentenceSave' } )
     if exist == {}
-      $memory.burn('knowledge',{:know => 'sentenceSave', :numMethods => 3, :methods => {:method1 => {'name' => 'saveOne', :numParam => 2},:method2 => {'name' => 'rescueOne', :numParam => 4},:method3 => {'name' => 'history', :numParam => 2}}})
+      $memory.burn('knowledge',{:know => 'sentenceSave', :numMethods => 3, :methods => {:method1 => {'name' => 'saveOne', :numParam => 1},:method2 => {'name' => 'rescueOne', :numParam => 1},:method3 => {'name' => 'history', :numParam => 2}}})
+    end
+
+    #Verification of the existence of the index help variable
+    exist = $memory.remember('sentenceSave', {:sentenceHelp => 'index'} )
+    if exist == {}
+      $memory.burn('sentenceSave',{:sentenceHelp => 'index', :current => 0})
     end
   end
 
 
-  def saveOne(client, command)
+  def saveOne(command, client)
 
-    #Mount the html case web
-    if client == 'web'
-      'teste'
-    #Mount the string case console
-    else #console
-      begin
-        $memory.burn('sentenceSave',{:sentenceName => '1', :sentenceBody => command})
-        true
-      rescue
-        false
-      end
+    begin
+      #Get the current index
+      p "save one"
+      indexCurrent = $memory.remember('sentenceSave', {:sentenceHelp => 'index'} )
+      #Burn the new sentence
+      $memory.burn('sentenceSave',{:sentenceBody => command, :sentenceIndex => (indexCurrent['current'] + 1) })
+      #Atualize the current index
+      $memory.burn('sentenceSave',{:sentenceHelp => 'index', :current => (indexCurrent['current'] + 1)})
+      true
+    rescue
+      false
     end
-
   end
 
 
-  def rescueOne(client, possition, direction)
-    sentence = $memory.remember('sentenceSave', {:sentenceName => '1' } )
-    $acessSense.speak('console',sentence)
-    sentence
+  def rescueOne(position, client)
+    #Get the current index
+    indexCurrent = $memory.remember('sentenceSave', {:sentenceHelp => 'index'} )
+    #Rescue a especific sentence
+    sentence = $memory.remember('sentenceSave', {:sentenceIndex => (indexCurrent['current'] - position[0].to_i)} )
+    $acessSense.speak('console', sentence['sentenceBody'])
   end
 
 
-  def history(client, lenght)
+  def history(lenght, client)
       sentences = $memory.rememberAll('sentenceSave')
       $acessSense.speak('console',sentences)
       sentences
@@ -49,5 +56,5 @@ class SentenceSave
 end
 
 #Create the acess object
+$know["sentenceSave"] = SentenceSave.new
 
-a = SentenceSave.new
