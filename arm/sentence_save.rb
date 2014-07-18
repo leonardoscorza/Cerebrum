@@ -45,6 +45,7 @@ class SentenceSave
     #Rescue a especific sentence
     sentence = $memory.remember('sentenceSave', {:sentenceIndex => (indexCurrent['current'] - position[0].to_i)} )
     $acessSense.speak('console', sentence['sentenceBody'])
+    p sentence['sentenceBody']
   end
 
 
