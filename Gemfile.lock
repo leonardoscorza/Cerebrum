@@ -4,10 +4,15 @@ GEM
     bson (1.10.2)
     bson_ext (1.10.2)
       bson (~> 1.10.2)
+    mime-types (1.25.1)
     mongo (1.10.2)
       bson (= 1.10.2)
     mongo_ext (0.19.3)
+    netrc (0.7.7)
     redis (3.1.0)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
 
 PLATFORMS
   ruby
@@ -17,3 +22,4 @@ DEPENDENCIES
   mongo
   mongo_ext
   redis
+  rest-client

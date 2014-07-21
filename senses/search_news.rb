@@ -1,6 +1,7 @@
 load './arm/memory.rb'
 require 'Hpricot'
 require 'json'
+require 'rest-client'
 
 class SearchNews
   $memory     = ''
@@ -19,45 +20,66 @@ class SearchNews
   end
 
 
-  def bbc_brasil(client, theme = nil)
+  def bbc_brasil(theme = nil, client)
     docReturn = {}
     urlBase = 'http://www.bbc.co.uk/portuguese/'
 
-    case theme
-    when 'brasil' or 'Brasil'
+    p 'a'
+    p 'theme', theme
+    p 'chegou aqui'
+
+    case theme[0]
+    when 'brasil' || 'Brasil'
       urlPart = 'topicos/brasil'
-    when 'internacional' or 'Internacional'
+    when 'internacional' || 'Internacional'
       urlPart = 'topicos/internacional'
-    when 'ciencia' or 'tecnologia' or 'Ciencia' or 'Tecnologia'
+    when 'ciencia' || 'tecnologia' || 'Ciencia' || 'Tecnologia'
       urlPart = 'topicos/ciencia_e_tecnologia'
     end
 
     #Do the request
     begin
-      file = open(urlBase + urlPart)
+      file = RestClient.get urlBase + urlPart
     rescue
       docReturn = 'Fail on communication with bbc'
       $acessSense.speak('console',docReturn)
       return docReturn
     end
 
-    #Process text
-    doc  = Hpricot(file)
-
-    #Get all elements on notice
-    newsTable = doc.search('.teaser')
-    newsTable.search('.ts-144x81').search('.summary').each {  |n| p n.children.select{|e| e.text?}}
-
-    #On return document add header and body on loop
-    docReturn.merge!('keyMUDAR' => 'head', 'keyMudar2' => 'body')
 
 
-    newsTable.search('.ts-144x81').search('a')[1]
-    a.search('.ts-144x81').search('a')[1].children.select{|e| e.text?}
-    a.search('.ts-144x81').search('.summary')[1].children.select{|e| e.text?}
 
-    p 'ab'
-    # $acessSense.speak('console',response.to_s)
+    begin
+
+      #Process text
+      doc  = Hpricot(file)
+      #Get all elements on notice
+      newsTable = doc.search('.teaser')
+
+      i = 0
+      while i != 10
+            noticeTitleExtract  = newsTable.search('.ts-144x81').search('.link')[i]
+            noticeBodyExtract   = newsTable.search('.ts-144x81').search('.summary')[i]
+            noticeTitle         = noticeTitleExtract.search('').text
+            noticeBody          = noticeBodyExtract.search('').text
+
+
+            docReturn['title' +  i.to_s] = noticeTitle
+            docReturn['body'  +  i.to_s] = noticeBody
+
+            i = i + 1
+      end
+
+      p 'docReturn', docReturn
+
+      $acessSense.speak('console',docReturn)
+    rescue
+      docReturn = 'Problem in colection of notices'
+      $acessSense.speak('console',docReturn)
+    end
+
+    return docReturn
+
   end
 
 end

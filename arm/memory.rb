@@ -63,4 +63,15 @@ class Memory
 		end
 	end
 
+	#Forgot a information
+	def forgotAll(memoryGroup)
+		#Forgot any thing
+		begin
+			@@db.collection(memoryGroup).drop()
+		rescue
+			#I can't remember for this i can't forgot
+			nil
+		end
+	end
+
 end
