@@ -35,6 +35,12 @@ class SearchNews
       urlPart = 'topicos/internacional'
     when 'ciencia' || 'tecnologia' || 'Ciencia' || 'Tecnologia'
       urlPart = 'topicos/ciencia_e_tecnologia'
+    when 'economia' || 'Economia'
+      urlPart = 'topicos/economia'
+    when 'saude' || 'Saude'
+      urlPart = 'topicos/saude'
+    when 'social' || 'Social'
+      urlPart = 'topicos/salasocial'
     end
 
     #Do the request
@@ -50,21 +56,21 @@ class SearchNews
 
 
     begin
-
       #Process text
       doc  = Hpricot(file)
       #Get all elements on notice
       newsTable = doc.search('.teaser')
-
       i = 0
       while i != 10
             noticeTitleExtract  = newsTable.search('.ts-144x81').search('.link')[i]
             noticeBodyExtract   = newsTable.search('.ts-144x81').search('.summary')[i]
+            noticeLink          = "<a target='_blank' href='http://www.bbc.co.uk#{noticeTitleExtract.search('/a')[0].attributes['href']}'> here </a>"
             noticeTitle         = noticeTitleExtract.search('').text
             noticeBody          = noticeBodyExtract.search('').text
 
 
             docReturn['title' +  i.to_s] = noticeTitle
+            docReturn['link'  +  i.to_s] = noticeLink
             docReturn['body'  +  i.to_s] = noticeBody
 
             i = i + 1
