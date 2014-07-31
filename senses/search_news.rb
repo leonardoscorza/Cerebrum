@@ -1,5 +1,5 @@
 load './arm/memory.rb'
-require 'Hpricot'
+require 'hpricot'
 require 'json'
 require 'rest-client'
 

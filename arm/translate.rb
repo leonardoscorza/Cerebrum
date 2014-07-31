@@ -1,5 +1,4 @@
 require 'rest-client'
-require 'json'
 
 class Translate
 	$translateObj = ''
@@ -22,5 +21,5 @@ class Translate
 
 end
 
-teste = Translate.new
-p teste.convertText('pt', 'en','ola%20meu%20nome%20%C3%A9%20momo')
+# teste = Translate.new
+# p teste.convertText('pt', 'nl','ola%20meu%20nome%20%C3%A9%20momo')
