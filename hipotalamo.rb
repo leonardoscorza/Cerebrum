@@ -1,22 +1,16 @@
 #This is the first eletron passing
 load 'synapsis.rb'
 
-
-
 class Hipotalamo
-	def initializations
+	def initialize
 		#Iniciate console
-		consoleT = Thread.new {
+		# consoleT = Thread.new {
  			Synapsis.new()	
-		}
-		consoleT.join()
+		# }
+		# consoleT.join()
 	end
 
 end
 
-
-
-
 #Inicialize the brain functions
 brain = Hipotalamo.new
-brain.initializations

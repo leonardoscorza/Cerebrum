@@ -8,6 +8,8 @@ class Translate
 	def initialize
 	end
 
+	def help
+	end
 
 	def convertText(languageBase, languageToConvert, text)
 		url = "https://translate.google.com/translate_a/single?client=t&sl=#{languageBase}&tl=#{languageToConvert}&hl=en&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&oc=1&otf=1&ssel=0&tsel=0&q=#{URI.escape(text)}"

@@ -1,20 +1,16 @@
-load './arm/memory.rb'
+load './fundamental/memory.rb'
 require 'hpricot'
 require 'json'
 require 'rest-client'
 
 class SearchNews
-  $memory     = ''
-
 
   def initialize
-    #Create relation on memory of the knowledge
-    $memory     = Memory.new('brainMemory')
-
+    @memory = Memory.new('brainMemory')
     #Verification of existent know in the brain
-    exist = $memory.remember('knowledge', {:know => 'search_news' } )
+    exist = @memory.remember('knowledge', {:know => 'search_news' } )
     if exist == {}
-      $memory.burn('knowledge',{:know => 'search_news', :numMethods => 1, :methods => {:method1 => {'name' => 'bbc_brasil', :numParam => 1}}})
+      @memory.burn('knowledge',{:know => 'search_news', :numMethods => 1, :methods => {:method1 => {'name' => 'bbc_brasil', :numParam => 1}}})
     end
 
   end
@@ -23,10 +19,6 @@ class SearchNews
   def bbc_brasil(theme = nil, client)
     docReturn = {}
     urlBase = 'http://www.bbc.co.uk/portuguese/'
-
-    p 'a'
-    p 'theme', theme
-    p 'chegou aqui'
 
     case theme[0]
     when 'brasil' || 'Brasil'

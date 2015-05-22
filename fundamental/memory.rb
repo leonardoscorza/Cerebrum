@@ -42,10 +42,14 @@ class Memory
 		begin
 			group  = @@db.collection(memoryGroup)
 			cursor = group.find({})
-			answer = {}
-			cursor.map { |h| answer = h }
+			answer = []
+			cursor.each do |c|
+				c.delete "_id"
+				answer.push(c)			
+			end
+			answer
 		rescue
-			#I can't remember
+			#I can't re
 			nil
 		end
 	end
