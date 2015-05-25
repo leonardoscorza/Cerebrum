@@ -1,4 +1,3 @@
-load './fundamental/memory.rb'
 require 'hpricot'
 require 'json'
 require 'rest-client'
@@ -6,12 +5,7 @@ require 'rest-client'
 class Search
 
   def initialize
-    @memory = Memory.new('brainMemory')
-    exist = @memory.remember('knowledge', {:know => 'search' } )
-    if exist == {}
-      @memory.burn('knowledge',{:know => 'search', :numMethods => 1})
-    end
-
+    $memory.save_know ({:know => 'search', :numMethods => 1})
   end
 
   def interpreter params, client

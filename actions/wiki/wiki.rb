@@ -1,4 +1,3 @@
-load './fundamental/memory.rb'
 require 'hpricot'
 require 'json'
 require 'rest-client'
@@ -6,12 +5,7 @@ require 'rest-client'
 class Wiki
 
   def initialize
-    @memory = Memory.new('brainMemory')
-    exist = @memory.remember('knowledge', {:know => 'wiki' } )
-    if exist == {}
-      @memory.burn('knowledge',{:know => 'wiki', :numMethods => 1})
-    end
-
+    $memory.save_know ({:know => 'wiki', :numMethods => 1})
   end
 
   def interpreter params, client

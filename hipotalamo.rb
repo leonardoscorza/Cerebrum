@@ -4,10 +4,7 @@ load 'synapsis.rb'
 class Hipotalamo
 	def initialize
 		#Iniciate console
-		# consoleT = Thread.new {
- 			Synapsis.new()	
-		# }
-		# consoleT.join()
+ 		Synapsis.new()
 	end
 
 end

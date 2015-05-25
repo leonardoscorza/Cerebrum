@@ -1,22 +1,13 @@
-load './fundamental/memory.rb'
-
-
-class AllBodyInformation
+class SelfInformation
 
   def initialize
-    @memory = Memory.new('brainMemory')
-    #Verification of existent know in the brain
-    exist = @memory.remember('knowledge', {:know => 'know' } )
-    if exist == {}
-      @memory.burn('knowledge',{:know => 'know', :numMethods => 2, :methods => {:method1 => {'name' => 'help', :numParam => 0},:method2 => {'name' => 'helpDois', :numParam => 0}}})
-    end
-
+    $memory.save_know ({:know => 'know', :numMethods => 2, :methods => {:method1 => {'name' => 'help', :numParam => 0},:method2 => {'name' => 'helpDois', :numParam => 0}}})
   end
 
   def get(client=nil)
 
     #Get the informations
-    knowInformations = @memory.rememberAll('knowledge')
+    knowInformations = $memory.rememberAll('knowledge')
     #Mount the html case web
     if client == 'web'
       'teste'
@@ -54,4 +45,4 @@ class AllBodyInformation
 end
 
 #Create the acess object
-$know["know"] = AllBodyInformation.new
+$know["know"] = SelfInformation.new

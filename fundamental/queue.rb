@@ -1,8 +1,6 @@
-require 'rubygems'
 require 'redis'
 
-
-class PrimitiveSense
+class Queue
 	@@requeue = ""
 
 	def initialize

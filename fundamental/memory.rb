@@ -1,5 +1,4 @@
 require 'mongo'
-require 'json'
 
 class Memory
 	@@db = ''
@@ -9,6 +8,13 @@ class Memory
 		conn = Mongo::Connection.new
 		@@db = conn.db(memory)
 	end
+
+	def save_know know_description
+		exist = self.remember('knowledge', {:know => know_description[:know] } )
+	    if exist == {}
+	      self.burn('knowledge',know_description)
+	    end
+  	end
 
 	def burn(memoryGroup, information)
 		#Brun a new memory
@@ -79,3 +85,5 @@ class Memory
 	end
 
 end
+
+$memory = Memory.new('brainMemory')

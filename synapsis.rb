@@ -1,10 +1,9 @@
-require 'json'
-load 'primitive_sense.rb'
 $know = {}
 
 #Load all fundamental files
 Dir["./fundamental/*.rb"].each {|file| require file }
 #Load all actions
+Dir["./actions/*/*.rb"].each   {|file| require file }
 Dir["./actions/*.rb"].each   {|file| require file }
 
 
@@ -15,7 +14,7 @@ class Synapsis
 
 	def initialize
     # Create primitive sense (redis)
-    $acessSense = PrimitiveSense.new
+    $acessSense = Queue.new
     # Create memory connection (mongo)
     @memory = Memory.new('brainMemory')
 		somatosensation()
@@ -75,9 +74,11 @@ class Synapsis
   #Execution stimulis part
   def cerebellum(know, params=nil)
     begin
-      $know[know].send('interpreter',params, @@client)
+      if $know[know].send('interpreter',params, @@client) == false
+        raise "error"
+      end 
     rescue
-      action.send('help')
+      $know[know].send('help')
     end
   end
 
