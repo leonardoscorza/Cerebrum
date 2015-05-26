@@ -1,0 +1,4 @@
+
+configurations:
+  help_message: 'translate any text'
+  action_name: 'translate'

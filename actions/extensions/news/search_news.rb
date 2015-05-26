@@ -4,11 +4,6 @@ require 'rest-client'
 
 class SearchNews < BaseModel
 
-  def initialize
-    $memory.save_know ({:know => 'search_news', :numMethods => 1, :methods => {:method1 => {'name' => 'bbc_brasil', :numParam => 1}}})
-  end
-
-
   def bbc_brasil(theme = nil, client)
     docReturn = {}
     urlBase = 'http://www.bbc.co.uk/portuguese/'
@@ -76,4 +71,4 @@ class SearchNews < BaseModel
 end
 
 #Create the acess object
-$know["search_news"] = SearchNews.new
+SearchNews.new __dir__

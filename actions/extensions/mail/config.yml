@@ -1,0 +1,4 @@
+
+configurations:
+  help_message: 'send, read and schedule emails and notifications'
+  action_name: 'mail'

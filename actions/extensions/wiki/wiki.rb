@@ -4,10 +4,6 @@ require 'rest-client'
 
 class Wiki < BaseModel
 
-  def initialize
-    $memory.save_know ({:know => 'wiki', :numMethods => 1})
-  end
-
   def interpreter params, client
     if params != []
         self.search params
@@ -51,4 +47,4 @@ class Wiki < BaseModel
 end
 
 #Create the acess object
-$know["wiki"] = Wiki.new
+Wiki.new __dir__

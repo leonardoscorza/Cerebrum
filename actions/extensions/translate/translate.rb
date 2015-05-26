@@ -5,11 +5,6 @@ require 'pry'
 class Translate < BaseModel
 	$translateObj = ''
 
-
-	def initialize
-	    $memory.save_know ({:know => 'translate', :numMethods => 1})
-	end
-
 	def interpreter(params, client)
 		special = ''
 		params.each do |param|
@@ -64,5 +59,5 @@ class Translate < BaseModel
 	end
 end
 
-$know["translate"] = Translate.new
+Translate.new __dir__
 # p teste.convertText('pt', 'nl','ola%20meu%20nome%20%C3%A9%20momo')

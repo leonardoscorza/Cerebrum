@@ -1,9 +1,5 @@
 class SelfInformation < BaseModel
 
-  def initialize
-    $memory.save_know ({:know => 'know', :numMethods => 2, :methods => {:method1 => {'name' => 'help', :numParam => 0},:method2 => {'name' => 'helpDois', :numParam => 0}}})
-  end
-
   def get(client=nil)
 
     #Get the informations
@@ -39,4 +35,4 @@ class SelfInformation < BaseModel
 end
 
 #Create the acess object
-$know["know"] = SelfInformation.new
+SelfInformation.new __dir__

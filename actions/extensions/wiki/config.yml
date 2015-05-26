@@ -1,0 +1,4 @@
+
+configurations:
+  help_message: 'Search on WikiPedia'
+  action_name: 'wiki'

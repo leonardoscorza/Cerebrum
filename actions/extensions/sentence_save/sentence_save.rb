@@ -1,7 +1,4 @@
 class SentenceSave < BaseModel
-  def initialize
-    $memory.save_know ({:know => 'sentenceSave', :numMethods => 3, :methods => {:method1 => {'name' => 'saveOne', :numParam => 1},:method2 => {'name' => 'rescueOne', :numParam => 1},:method3 => {'name' => 'history', :numParam => 2}}})
-  end
 
   # ------ BASE METHODS, INTERPRETER AND HELP -------- #
   def interpreter(params, client)
@@ -54,5 +51,5 @@ class SentenceSave < BaseModel
 end
 
 #Create the acess object
-$know["sentenceSave"] = SentenceSave.new
+SentenceSave.new __dir__
 

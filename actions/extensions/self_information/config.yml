@@ -1,0 +1,4 @@
+
+configurations:
+  help_message: 'Just call know to see all informations about fundamentals and extensions'
+  action_name: 'know'

@@ -4,10 +4,6 @@ require 'rest-client'
 
 class Search < BaseModel
 
-  def initialize
-    $memory.save_know ({:know => 'search', :numMethods => 1})
-  end
-
   def interpreter params, client
     if params != []
         self.search params
@@ -38,4 +34,4 @@ class Search < BaseModel
 end
 
 #Create the acess object
-$know["search"] = Search.new
+Search.new __dir__

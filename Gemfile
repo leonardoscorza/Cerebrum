@@ -11,3 +11,14 @@ gem 'byebug'
 gem 'mail'
 gem 'rspec'
 gem 'logging'
+
+
+#Add Gems for fundamentals
+Dir["./actions/fundamental/*/Gemfile"].each do |gemfile|
+	eval(IO.read(gemfile), binding)
+end
+
+#Add Gems for extensions
+Dir["./actions/extensions/*/Gemfile"].each do |gemfile|
+	eval(IO.read(gemfile), binding)
+end

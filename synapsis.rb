@@ -1,7 +1,10 @@
-$know = {}
-
-#Load all fundamental files
+#Load fundamentals actions
 require './base_model.rb'
+require './actions/fundamental/memory/memory.rb'
+require './actions/fundamental/queue/queue.rb'
+require './actions/fundamental/zip/zip.rb'
+#Load all extensions actions
+Dir["./actions/extensions/*/*.rb"].each   {|file| require file }
 
 
 class Synapsis
@@ -71,7 +74,7 @@ class Synapsis
   #Execution stimulis part
   def cerebellum(know, params=nil)
     begin
-      if $know[know].send('interpreter',params, @@client) == false
+      if BaseModel::get(know).send('interpreter',params, @@client) == false
         raise "error"
       end 
     rescue Exception => e

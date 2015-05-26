@@ -2,11 +2,6 @@
 
 class Mail < BaseModel
 
-  def initialize
-    $memory.save_know ({:know => 'mail', :numMethods => 1})
-   	$memory.burn('mail',{:mail => 'a@a.com', :password => '1234'})
-  end
-
   def interpreter params, client
     params.each do |param|
 	   	if param.include? 'read'
@@ -38,4 +33,4 @@ class Mail < BaseModel
 end
 
 #Create the acess object
-$know["mail"] = Mail.new
+Mail.new __dir__

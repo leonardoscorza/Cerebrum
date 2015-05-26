@@ -1,7 +1,25 @@
-#Load commons files
 require 'yaml'
 
+$know = {}
 class BaseModel
+
+  def initialize dir
+    self.know_array dir
+  end
+
+  def know_array dir
+    configurations = YAML::load_file(File.join(dir, 'config.yml'))
+    begin
+      action_name = configurations['configurations']['action_name']
+    rescue
+      action_name = self.class.name.downcase
+    end
+    $know[action_name] = self
+  end
+
+  def self.get name
+    $know[name]
+  end
 
   def help dir, client=nil
     begin
@@ -13,11 +31,5 @@ class BaseModel
     $acessSense.speak('console',message)
     true
   end
-end
 
-#Load fundamentals actions
-require './fundamental/memory/memory.rb'
-require './fundamental/queue/queue.rb'
-require './fundamental/zip/zip.rb'
-#Load all actions
-Dir["./actions/*/*.rb"].each   {|file| require file }
+end
