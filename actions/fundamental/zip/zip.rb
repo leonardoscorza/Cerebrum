@@ -1,4 +1,3 @@
-
 class Zip < BaseModel
 
   def interpreter(params, client)

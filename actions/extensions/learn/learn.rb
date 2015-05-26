@@ -1,5 +1,3 @@
-require 'json'
-require 'rest-client'
 
 class Learn < BaseModel
 

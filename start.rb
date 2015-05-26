@@ -1,9 +1,9 @@
 #This is the first eletron passing
 load 'synapsis.rb'
-# Initialize the system
-require "./configurations/start.rb"
+# Initialize and configure the system
+require "./configurations/make.rb"
 
-class Hipotalamo
+class Start
 	def initialize
 		#Iniciate console
  		Synapsis.new()
@@ -12,4 +12,4 @@ class Hipotalamo
 end
 
 #Inicialize the brain functions
-brain = Hipotalamo.new
+brain = Start.new

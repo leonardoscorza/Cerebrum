@@ -1,6 +1,4 @@
 require 'hpricot'
-require 'json'
-require 'rest-client'
 
 class SearchNews < BaseModel
 

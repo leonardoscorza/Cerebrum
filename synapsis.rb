@@ -4,25 +4,22 @@ require './actions/fundamental/memory/memory.rb'
 require './actions/fundamental/queue/queue.rb'
 require './actions/fundamental/zip/zip.rb'
 #Load all extensions actions
-Dir["./actions/extensions/*/*.rb"].each   {|file| require file }
+Dir["./actions/extensions/*/*.rb"].each {|file| require file }
 
 
 class Synapsis
   $acessSense = ''
   @@client    = ''
-  @memory     = ''
 
 	def initialize
     # Create primitive sense (redis)
     $acessSense = Queue.new
-    # Create memory connection (mongo)
-    @memory = Memory.new('brainMemory')
-		somatosensation()
+    # Call the monitor, to execute actions when new command
+		monitoring_queue()
 	end
 
   #Monitoring sensations parts
-	def somatosensation
-
+	def monitoring_queue
     loop do
       # Wait a new command (Redis)
       sleep(0.1)
@@ -40,44 +37,68 @@ class Synapsis
 
   #Interpret language stimulis part
 	def temporalLobe(synapse)
-    #Process the synapse
     synapseArray = synapse.split(' ')
-    #Save the returns of methods to use in others
-    returnsOfMethods = []
-    #Try catch the solicitation client
+    action_return = nil
+    connection = false
     begin
+
       @@client = synapseArray.shift
-    rescue
-      return "No client"
-    end
-    #Test to confirm that is a think
-    unless synapseArray.shift == 'THINK'
-      return "Not is a think"
-    end
-    #Try remember yourself of the sense or action
-    knowMethods = @memory.remember('knowledge', {:know => synapseArray.shift } )
-    if knowMethods == {}
-      return "I do not know or forgot how to do this. If you want I can tell you about the things I know. Ask me about my knowledge [know]."
-    else
-      #Get the params
-      arrayParameters = []
-      while synapseArray != [] and synapseArray != "AND" and synapseArray != "CONNECT" 
-        syn = synapseArray.shift
-        arrayParameters.push(syn)
+      unless @@client
+        raise "Haven't a client"
       end
-      #If the params are okay, call the execution process
-      p "Are all okay, call the execution..."
-      return self.cerebellum(knowMethods['know'], arrayParameters)
+
+      unless synapseArray.shift == 'THINK'
+        raise 'Its not a think'
+      end
+
+      while synapseArray
+
+        while synapseArray.first == 'AND'
+          synapseArray.shift
+        end
+
+        if synapseArray.first == 'CONNECT'
+          synapseArray.shift
+          connection = true
+        end
+      
+        knowMethod = synapseArray.shift
+        unless knowMethod
+          raise "Haven't a command"
+        end
+
+        #Get the params
+        arrayParameters = []
+        while synapseArray != [] and synapseArray.first != "AND" and synapseArray.first != "CONNECT" 
+          syn = synapseArray.shift
+          arrayParameters.push(syn)
+        end
+
+        if connection
+          p action_return
+          arrayParameters.push action_return
+          connection = false
+        end
+
+
+        p "Are all okay, call the execution..."
+        action_return = self.cerebellum(knowMethod, arrayParameters)
+      end
+    rescue Exception => e
+      $acessSense.speak('console',"I don't know or don't understrand, be more clear human" + e)
+      Logger::log e, 'error'
     end
 	end
 
   #Execution stimulis part
   def cerebellum(know, params=nil)
+    p BaseModel::action_obj(know)
     begin
-      if BaseModel::get(know).send('interpreter',params, @@client) == false
+      if BaseModel::action_obj(know).send('interpreter',params, @@client) == false
         raise "error"
       end 
     rescue Exception => e
+      $acessSense.speak('console',"Error on the Execution of your command")
       Logger::log e, 'error'
     end
   end

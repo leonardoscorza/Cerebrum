@@ -2,7 +2,7 @@ Modules to developer
 
   Notes: Try use always extern services
 
-  IMPORTANT: Create a structureof folder to actions, using rspec to test class.
+  IMPORTANT: Use rspec to test class.
              Create a initializer to actions, that call the tests and return health of modules.
 
 - Informations source

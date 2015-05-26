@@ -1,5 +1,9 @@
 This is just any words about the structure
 	
+
+	Note: Todas as classes herdam a BaseModel, e tiram dela as funcoes basicas
+
+
 	The requirements
 		# Redis
 		# MongoDB
@@ -15,6 +19,7 @@ This is just any words about the structure
 		# TheActionFolder
 		  & ActionClass (rb)
 		  & ActionDescription (yml)
+		  & Gemfile
 
 	Details:
 		TERMINAL: This, works like a unix terminal. Get commands, check if this commands are valid commands, and call the right action. He can concat actions (command one CONNECT command two), or handle with disconnecteds commands like (command one AND command two).
