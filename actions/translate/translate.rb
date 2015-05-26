@@ -2,7 +2,7 @@ require 'rest-client'
 require 'open-uri'
 require 'pry'
 
-class Translate
+class Translate < BaseModel
 	$translateObj = ''
 
 
@@ -20,15 +20,10 @@ class Translate
 	    end
 
 	    if special == "help"
-			self.help
+			self.help __dir__
 		else
 			self.convertText params, client
 		end
-	end
-
-	def help
-		$acessSense.speak('console','To use this know, call translate language_from:pt language_to:en and the text')
-		true
 	end
 
 	def convertText(params, client)

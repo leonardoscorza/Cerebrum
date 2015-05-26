@@ -1,0 +1,86 @@
+ERROR  my_logger : return_all
+ INFO  my_logger : just some friendly advice method here
+ERROR  my_logger : abc
+ERROR  my_logger : <ArgumentError> wrong number of arguments (1 for 2)
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/sentence_save/sentence_save.rb:24:in `saveOne'
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/sentence_save/sentence_save.rb:10:in `interpreter'
+	synapsis.rb:74:in `cerebellum'
+	synapsis.rb:67:in `temporalLobe'
+	synapsis.rb:30:in `block (2 levels) in somatosensation'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `call'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `block in create_with_logging_context'
+ERROR  my_logger : <NameError> undefined local variable or method `e' for #<SelfInformation:0x00000003773398>
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/self_information/self_information.rb:33:in `return_all'
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/self_information/self_information.rb:26:in `interpreter'
+	synapsis.rb:74:in `cerebellum'
+	synapsis.rb:67:in `temporalLobe'
+	synapsis.rb:30:in `block (2 levels) in somatosensation'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `call'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `block in create_with_logging_context'
+ERROR  my_logger : <ArgumentError> wrong number of arguments (1 for 2)
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/sentence_save/sentence_save.rb:24:in `saveOne'
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/sentence_save/sentence_save.rb:10:in `interpreter'
+	synapsis.rb:74:in `cerebellum'
+	synapsis.rb:67:in `temporalLobe'
+	synapsis.rb:30:in `block (2 levels) in somatosensation'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `call'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `block in create_with_logging_context'
+ERROR  my_logger : <NameError> undefined local variable or method `e' for #<SelfInformation:0x00000003172f20>
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/self_information/self_information.rb:33:in `return_all'
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/self_information/self_information.rb:26:in `interpreter'
+	synapsis.rb:74:in `cerebellum'
+	synapsis.rb:67:in `temporalLobe'
+	synapsis.rb:30:in `block (2 levels) in somatosensation'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `call'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `block in create_with_logging_context'
+ERROR  my_logger : <ArgumentError> wrong number of arguments (1 for 2)
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/sentence_save/sentence_save.rb:24:in `saveOne'
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/sentence_save/sentence_save.rb:10:in `interpreter'
+	synapsis.rb:74:in `cerebellum'
+	synapsis.rb:67:in `temporalLobe'
+	synapsis.rb:30:in `block (2 levels) in somatosensation'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `call'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `block in create_with_logging_context'
+ERROR  my_logger : <NameError> undefined local variable or method `e' for #<SelfInformation:0x00000003656c30>
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/self_information/self_information.rb:33:in `return_all'
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/self_information/self_information.rb:26:in `interpreter'
+	synapsis.rb:74:in `cerebellum'
+	synapsis.rb:67:in `temporalLobe'
+	synapsis.rb:30:in `block (2 levels) in somatosensation'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `call'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `block in create_with_logging_context'
+ERROR  my_logger : <ArgumentError> wrong number of arguments (1 for 2)
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/sentence_save/sentence_save.rb:24:in `saveOne'
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/sentence_save/sentence_save.rb:10:in `interpreter'
+	synapsis.rb:74:in `cerebellum'
+	synapsis.rb:67:in `temporalLobe'
+	synapsis.rb:30:in `block (2 levels) in somatosensation'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `call'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `block in create_with_logging_context'
+ERROR  my_logger : <NameError> undefined local variable or method `e' for #<SelfInformation:0x00000002b194d0>
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/self_information/self_information.rb:33:in `return_all'
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/self_information/self_information.rb:26:in `interpreter'
+	synapsis.rb:74:in `cerebellum'
+	synapsis.rb:67:in `temporalLobe'
+	synapsis.rb:30:in `block (2 levels) in somatosensation'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `call'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `block in create_with_logging_context'
+ERROR  my_logger : abc
+ERROR  my_logger : abc
+ERROR  my_logger : <ArgumentError> wrong number of arguments (1 for 2)
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/sentence_save/sentence_save.rb:24:in `saveOne'
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/sentence_save/sentence_save.rb:10:in `interpreter'
+	synapsis.rb:74:in `cerebellum'
+	synapsis.rb:67:in `temporalLobe'
+	synapsis.rb:30:in `block (2 levels) in somatosensation'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `call'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `block in create_with_logging_context'
+ERROR  my_logger : aqui
+ERROR  my_logger : <ArgumentError> wrong number of arguments (1 for 2)
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/sentence_save/sentence_save.rb:24:in `saveOne'
+	/home/leonardo/Documentos/projects/personal/Cerebrum/actions/sentence_save/sentence_save.rb:10:in `interpreter'
+	synapsis.rb:74:in `cerebellum'
+	synapsis.rb:67:in `temporalLobe'
+	synapsis.rb:30:in `block (2 levels) in somatosensation'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `call'
+	/home/leonardo/.rvm/gems/ruby-2.2.1/gems/logging-2.0.0/lib/logging/diagnostic_context.rb:448:in `block in create_with_logging_context'

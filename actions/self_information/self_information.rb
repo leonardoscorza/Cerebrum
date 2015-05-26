@@ -1,4 +1,4 @@
-class SelfInformation
+class SelfInformation < BaseModel
 
   def initialize
     $memory.save_know ({:know => 'know', :numMethods => 2, :methods => {:method1 => {'name' => 'help', :numParam => 0},:method2 => {'name' => 'helpDois', :numParam => 0}}})
@@ -21,27 +21,21 @@ class SelfInformation
   def interpreter(params, client)
     case params[0]
       when "help"
-        self.help
-      when "helpDois"
-        self.helpDois
+        self.help __dir__
       else
-        self.help
+        self.return_all
     end
     true
   end
+  # -----                                       -------- #
 
-  def help(client=nil)
+  def return_all client=nil
     response = self.get(client)
     $acessSense.speak('console',response.to_s)
     response
   end
-  # -----                                       -------- #
 
 
-  def helpDois
-    'Class to information about the attributes of the body. (senses, actions and your needs)
-     This class dont need parameters2.'
-  end
 end
 
 #Create the acess object

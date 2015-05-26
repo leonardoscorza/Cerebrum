@@ -2,7 +2,7 @@ require 'hpricot'
 require 'json'
 require 'rest-client'
 
-class Wiki
+class Wiki < BaseModel
 
   def initialize
     $memory.save_know ({:know => 'wiki', :numMethods => 1})
@@ -12,13 +12,9 @@ class Wiki
     if params != []
         self.search params
     else
-        self.help
+        self.help __dir__
     end
     true
-  end
-
-  def help client=nil
-    $acessSense.speak('console','Call search more terms that you want : )...humans...')
   end
 
   def search params=nil

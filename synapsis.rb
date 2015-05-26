@@ -1,10 +1,7 @@
 $know = {}
 
 #Load all fundamental files
-Dir["./fundamental/*.rb"].each {|file| require file }
-#Load all actions
-Dir["./actions/*/*.rb"].each   {|file| require file }
-Dir["./actions/*.rb"].each   {|file| require file }
+require './base_model.rb'
 
 
 class Synapsis
@@ -77,8 +74,8 @@ class Synapsis
       if $know[know].send('interpreter',params, @@client) == false
         raise "error"
       end 
-    rescue
-      $know[know].send('help')
+    rescue Exception => e
+      Logger::log e, 'error'
     end
   end
 

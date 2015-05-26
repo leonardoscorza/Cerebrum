@@ -1,4 +1,4 @@
-class SentenceSave
+class SentenceSave < BaseModel
   def initialize
     $memory.save_know ({:know => 'sentenceSave', :numMethods => 3, :methods => {:method1 => {'name' => 'saveOne', :numParam => 1},:method2 => {'name' => 'rescueOne', :numParam => 1},:method3 => {'name' => 'history', :numParam => 2}}})
   end
@@ -13,15 +13,11 @@ class SentenceSave
       when "history"
         self.history
       else
-        self.help
+        self.help __dir__
     end
     true
   end
 
-  def help
-    # $acessSense.speak('console', 'To use this method...')
-    true
-  end
   # -----                                       -------- #
 
 

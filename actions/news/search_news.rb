@@ -2,7 +2,7 @@ require 'hpricot'
 require 'json'
 require 'rest-client'
 
-class SearchNews
+class SearchNews < BaseModel
 
   def initialize
     $memory.save_know ({:know => 'search_news', :numMethods => 1, :methods => {:method1 => {'name' => 'bbc_brasil', :numParam => 1}}})

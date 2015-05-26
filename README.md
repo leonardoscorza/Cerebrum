@@ -9,8 +9,12 @@ This is just any words about the structure
 
 	The ideal
 		# TERMINAL, to get commands and call actions
-		# ACTIONS, that do the job. Like a man, have arms, eyes, and any thing that do a specif or a combined work.
+		# ACTIONS, that do the job. Like a man, have arms, eyes, and anything that do a specif or a combined work.
 		# BRAIN, this interpret the human interact, and think about the best way to call the terminal to see the job already.
+	The action Structure
+		# TheActionFolder
+		  & ActionClass (rb)
+		  & ActionDescription (yml)
 
 	Details:
 		TERMINAL: This, works like a unix terminal. Get commands, check if this commands are valid commands, and call the right action. He can concat actions (command one CONNECT command two), or handle with disconnecteds commands like (command one AND command two).
@@ -85,3 +89,11 @@ This is just any words about the structure
 		$know["wiki"] = Wiki.new
 		----------------------------------------------------------------------------------
 		BRAIN: Come soon
+
+
+
+
+
+
+
+

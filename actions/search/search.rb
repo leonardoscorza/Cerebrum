@@ -2,7 +2,7 @@ require 'hpricot'
 require 'json'
 require 'rest-client'
 
-class Search
+class Search < BaseModel
 
   def initialize
     $memory.save_know ({:know => 'search', :numMethods => 1})

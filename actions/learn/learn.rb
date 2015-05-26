@@ -1,7 +1,7 @@
 require 'json'
 require 'rest-client'
 
-class Learn
+class Learn < BaseModel
 
   def initialize
     $memory.save_know ({:know => 'learn', :numMethods => 1})
@@ -11,9 +11,7 @@ class Learn
 
   def interpreter params, client
     p 'learn learn learn'
-  end
-
-  def help client=nil
+    self.help __dir__
   end
 
     

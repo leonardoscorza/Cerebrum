@@ -1,6 +1,6 @@
 require 'mongo'
 
-class Memory
+class Memory < BaseModel
 	@@db = ''
 
 	def initialize(memory)

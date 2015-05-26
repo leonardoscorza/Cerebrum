@@ -1,6 +1,6 @@
 # require 'mail'
 
-class Mail
+class Mail < BaseModel
 
   def initialize
     $memory.save_know ({:know => 'mail', :numMethods => 1})
@@ -17,11 +17,7 @@ class Mail
 	    if type == 'read'
 	    	self.read_last
 	    end
-	end
-  end
-
-  def help client=nil
-  	p 'mail me'
+	  end
   end
 
   def read_last
