@@ -1,15 +1,15 @@
-#This is the first eletron passing
-load 'synapsis.rb'
 # Initialize and configure the system
-require "./configurations/make.rb"
+require "./configurations/initialize.rb"
+# Call the interpreter and executer method
+require './processing.rb'
 
 class Start
 	def initialize
 		#Iniciate console
- 		Synapsis.new()
+ 		Processing.new()
 	end
 
 end
 
-#Inicialize the brain functions
-brain = Start.new
+# Initialize
+Start.new

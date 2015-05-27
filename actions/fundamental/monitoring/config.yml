@@ -1,0 +1,4 @@
+
+configurations:
+  help_message: 'monitor the queue'
+  action_name: 'monitoring'
