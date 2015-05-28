@@ -15,11 +15,10 @@ class SelfInformation < BaseModel
 
   # ------ BASE METHODS, INTERPRETER AND HELP -------- #
   def interpreter(params, client)
-    case params[0]
-      when "help"
-        self.help __dir__
-      else
-        self.return_all
+    if params
+        self.help
+    else
+      self.return_all
     end
     true
   end

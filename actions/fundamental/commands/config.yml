@@ -1,0 +1,4 @@
+
+configurations:
+  help_message: 'Interpret commands'
+  action_name: 'commands'

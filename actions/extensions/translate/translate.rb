@@ -5,13 +5,7 @@ class Translate < BaseModel
 	$translateObj = ''
 
 	def interpreter(params, client)
-		special = ''
-		params.each do |param|
-	      if param.include? 'special'
-	        special = param.split(":")[1]
-	        params.delete(param)
-	      end
-	    end
+	    params, special = cut_param params, 'special'
 
 	    if special == "help"
 			self.help __dir__
@@ -21,37 +15,18 @@ class Translate < BaseModel
 	end
 
 	def convertText(params, client)
-		language_from = nil
-		language_to   = nil
-		params.each do |param|
-	      if param.include? 'language_from'
-	        language_from = param.split(":")[1]
-	        params.delete(param)
-	      end  
-	    end
-	    params.each do |param|
-	      if param.include? 'language_to'
-	        language_to = param.split(":")[1]
-	        params.delete(param)
-	      end
-	    end
-	    p language_to
+	    params, language_from = cut_param params, 'language_from'
+	   	params, language_to   = cut_param params, 'language_to'
 	    
 	    if language_from != nil and language_to != nil
-	    	# text = []
-	    	# params.each do |p|
-	    	# 	text.push(p.gsub(' ', '').gsub('\n', ''))
-	    	# end
 	    	text = params.join(" ")
-
-	    	p params
 			url = "https://translate.google.com/translate_a/single?client=t&sl=#{language_from}&tl=#{language_to}&hl=en&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&oc=1&otf=1&ssel=0&tsel=0&q=#{URI.escape(text)}"
-			# binding.pry   
 			response = RestClient.get(
 			  url, {:user_agent => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36", :cookies => {:_ga => "GA1.3.1669895849.1402852165", :PREF => "ID=89af926e087cbbb0:U=3c40bca583a91f52:TM=1402852153:LM=1402852222:S=zIfzdZo1mCEwYqLu", :NID => "67=RP6Ux3LZBWb2cma8fAP9Xjh9RbLawvZ3-Wj7cuyaL4Ow2ex4JPi5cSQwEKy4IfZSMoGNOrvi4GU9aZLaKzH3jpIWmoz-rTpDubtIrmNgIOA1w2dUusiJiOd7nytHP89H"}}
 			)
-		   	$acessSense.speak('console',response.scan(/"([^"]*)"/)[0][0])
-		   	true
+			response = response.scan(/"([^"]*)"/)[0][0]
+		   	$acessSense.speak('console',response)
+		   	response
 		else
 			false
 		end

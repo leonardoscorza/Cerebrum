@@ -8,7 +8,6 @@ class Wiki < BaseModel
     else
         self.help __dir__
     end
-    true
   end
 
   def search params=nil
@@ -16,7 +15,6 @@ class Wiki < BaseModel
     params.each do |param|
       if param.include? 'language'
         language = param.split(":")[1]
-        p language
         params.delete(param)
       end
     end
@@ -37,9 +35,8 @@ class Wiki < BaseModel
         p 'rescue'
       end
     end
-    p results
     $acessSense.speak('console',results)
-    true
+    results.first
   end
     
 end

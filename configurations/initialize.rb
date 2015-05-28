@@ -12,7 +12,10 @@ require './base_model.rb'
 require './actions/fundamental/memory/memory.rb'
 require './actions/fundamental/queue/queue.rb'
 require './actions/fundamental/monitoring/monitoring.rb'
+require './actions/fundamental/commands/commands.rb'
 require './actions/fundamental/zip/zip.rb'
+require './actions/fundamental/process_words/process_words.rb'
+
 #--Exensions
 Dir["./actions/extensions/*/*.rb"].each {|file| require file }
 

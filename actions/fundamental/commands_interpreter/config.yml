@@ -1,4 +1,0 @@
-
-configurations:
-  help_message: 'Its a zip and unzip auxiliar, just use zip fileName to zip and unzip fileName to unzip'
-  action_name: 'commands_interpreter'
