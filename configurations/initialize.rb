@@ -18,6 +18,8 @@ require './actions/fundamental/process_words/process_words.rb'
 
 #--Exensions
 Dir["./actions/extensions/*/*.rb"].each {|file| require file }
+Dir["./actions/extensions/*/*.rb"].each {|file| p file }
+
 
 #----Initialize system modules----#
 Dir[__dir__ + "/initializers/*.rb"].each {|file| require file }

@@ -7,7 +7,7 @@ class BaseModel
 
   def initialize dir
     @dir = dir
-    self.actions_array dir
+    self.actions_array
   end
 
   def configurations
@@ -16,16 +16,18 @@ class BaseModel
 
   def cut_param params, word
     return_word = nil
-    params.each do |param|
-        if param.class == String and param.include? word
-          return_word = param.split(":")[1]
-          params.delete(param)
-        end
+    if params
+      params.each do |param|
+          if param.class == String and param.include? word
+            return_word = param.split(":")[1]
+            params.delete(param)
+          end
+      end
     end
     [params, return_word]
   end
 
-  def actions_array dir
+  def actions_array
     begin
       action_name = self.configurations['configurations']['action_name']
     rescue

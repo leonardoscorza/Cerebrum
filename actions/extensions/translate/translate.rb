@@ -34,4 +34,3 @@ class Translate < BaseModel
 end
 
 Translate.new __dir__
-# p teste.convertText('pt', 'nl','ola%20meu%20nome%20%C3%A9%20momo')

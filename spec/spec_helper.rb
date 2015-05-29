@@ -1,4 +1,4 @@
-require_relative '../actions/self_information/self_information'
-# require_relative '../book'
+require './base_model.rb'
 
-require 'yaml'
+Dir["./actions/fundamental/*/*_spec.rb"].each {|file| require file }
+Dir["./actions/extensions/*/*_spec.rb"].each {|file| require file }

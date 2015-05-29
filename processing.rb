@@ -18,7 +18,7 @@ class Processing
       raise 'Error on command: #{commands[:type]}' unless commands[:status]
       response = nil
       commands[:actions].each do |c|
-        if c[:params].empty?
+        if c[:params].empty? and not c[:type_connect]
           response = self.execute(c[:action])
         else
           c[:params].push(response) if c[:type_connect]
@@ -40,7 +40,6 @@ class Processing
       $acessSense.speak('console',"Error on the Execution of your command " + command)
       Logger::log e, 'error'
     end
-    p 'aqui',result
     result
   end
 

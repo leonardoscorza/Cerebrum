@@ -1,19 +1,19 @@
 require 'redis'
 
 class Queue
-	@@requeue = ""
+	@requeue = ""
 
 	def initialize
-		@@requeue = Redis.new
+		@requeue = Redis.new
 	end
 
 	#Listen for shell name (!)
 	def listen
-		@@requeue.rpop('!')
+		@requeue.rpop('!')
 	end
 
 	#expressed their wishes (what) to member (who)
 	def speak(who, what)
-		@@requeue.lpush(who, what)
+		@requeue.lpush(who, what)
 	end
 end
