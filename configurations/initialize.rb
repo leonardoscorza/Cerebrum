@@ -2,7 +2,11 @@ p 'The magic begin now'
 
 class Initialize
 	def self.configurations
-		YAML::load_file(File.join('./configurations', 'config.yml'))
+		YAML::load_file(File.join('./configurations', 'config.yml'))['configurations']
+	end
+
+	def self.messages
+		YAML::load_file(File.join('./configurations', 'messages.yml'))['messages'][configurations['language_abv']]
 	end
 end
 
@@ -17,8 +21,9 @@ require './actions/fundamental/zip/zip.rb'
 require './actions/fundamental/process_words/process_words.rb'
 
 #--Exensions
-Dir["./actions/extensions/*/*.rb"].each {|file| require file }
-Dir["./actions/extensions/*/*.rb"].each {|file| p file }
+Dir["./actions/extensions/*/*.rb"].each do |file|
+	require file unless file.split('/').last.include? 'spec'
+end
 
 
 #----Initialize system modules----#

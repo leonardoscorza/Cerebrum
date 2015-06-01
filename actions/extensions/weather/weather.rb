@@ -15,7 +15,7 @@ class Weather < BaseModel
 							wind_speed: weather_j['wind']['speed'],
 							wind_deg:   weather_j['wind']['deg']
   			           }
-  			$acessSense.speak('console',results)
+  			self.response('console',results)
   		rescue Exception => e
   			p e
   			self.help

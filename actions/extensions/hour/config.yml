@@ -1,0 +1,4 @@
+configurations:
+  help_message: 'Example time in london, returns the time of london with the fuso'
+  action_name: 'hour'
+  wiki: 'Return the current hour in any city or country(default hour)'

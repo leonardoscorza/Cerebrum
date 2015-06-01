@@ -1,0 +1,4 @@
+configurations:
+  help_message: 'Commands: crypt encrypt phrase, crypt descrypt phrase, crypt new public key, crypt my public key'
+  action_name: 'crypt'
+  wiki: 'Encrypt and descrypt phrases'

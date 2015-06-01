@@ -1,0 +1,7 @@
+messages:
+  en:
+    error_execute: 'Error on the Execution of your command'
+    error_command: 'Error on the command'
+  pt: 
+    error_execute: 'Erro na execuçao do comando'
+    error_command: 'Erro no comando'

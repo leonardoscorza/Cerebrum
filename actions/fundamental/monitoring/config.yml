@@ -1,4 +1,4 @@
-
 configurations:
   help_message: 'monitor the queue'
   action_name: 'monitoring'
+  refresh_seconds: 0.05

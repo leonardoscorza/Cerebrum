@@ -7,15 +7,15 @@ class Processing
 
 	def monitoring_queue
     loop do
-      process = self.execute('monitoring')
+      process = self.execute(Initialize::configurations['monitoring_action'])
       Thread.new { command_interpreter(process) }
     end
 	end
 
 	def command_interpreter(process)
-    commands = self.execute('commands', process)
+    commands = self.execute(Initialize::configurations['interpreter_action'], process)
     begin
-      raise 'Error on command: #{commands[:type]}' unless commands[:status]
+      raise "#{Initialize::messages['error_command']}: #{commands[:type]}" unless commands[:status]
       response = nil
       commands[:actions].each do |c|
         if c[:params].empty? and not c[:type_connect]
@@ -37,7 +37,7 @@ class Processing
     rescue Interrupt
       exit
     rescue Exception => e
-      $acessSense.speak('console',"Error on the Execution of your command " + command)
+      $acessSense.speak('console',"#{Initialize::messages['error_execute']} #{command}")
       Logger::log e, 'error'
     end
     result

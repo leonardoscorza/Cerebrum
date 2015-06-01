@@ -32,12 +32,12 @@ class Wiki < BaseModel
           p 'rescue'
         end
       end
-      $acessSense.speak('console',results)
+      self.response('console',results)
       results.first
+      end
+    else
+      false
     end
-  else
-    false
-  end
 end
 
 #Create the acess object

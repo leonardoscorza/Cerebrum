@@ -1,3 +1,6 @@
-
 configurations:
   max_threads: 5
+  monitoring_action: 'monitoring'
+  memory_action: 'memory'
+  interpreter_action: 'commands'
+  language_abv: 'en'

@@ -1,4 +1,6 @@
-
 configurations:
   help_message: 'Interpret commands'
   action_name: 'commands'
+  connect_code: 'CONNECT'
+  and_code: 'AND'
+  initializer_code: 'THINK'

@@ -1,0 +1,4 @@
+configurations:
+  help_message: 'Put here your help message...'
+  action_name: 'monitorWeb'
+  wiki: 'Write any words about your extension'

@@ -11,7 +11,7 @@ class Monitoring < BaseModel
 		process = nil
 	    loop do
 	      # Wait a new command (Redis)
-	      sleep(0.1)
+	      sleep(configurations['refresh_seconds'].to_f)
 	      process = $acessSense.listen()
 	      unless process.nil?
 	      	break

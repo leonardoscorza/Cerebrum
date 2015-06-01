@@ -1,0 +1,4 @@
+configurations:
+  help_message: 'Just call xss site_url'
+  action_name: 'feed'
+  wiki: 'Get the current feed of a site'

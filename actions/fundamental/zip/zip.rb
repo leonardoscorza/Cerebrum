@@ -1,7 +1,7 @@
 class Zip < BaseModel
 
   def interpreter(params, client)
-    self.help __dir__ 
+    self.help
   end
 end
 

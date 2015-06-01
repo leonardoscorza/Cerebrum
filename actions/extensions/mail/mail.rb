@@ -3,19 +3,12 @@
 class Mail < BaseModel
 
   def interpreter params, client
-    params.each do |param|
-	   	if param.include? 'read'
-	        params.delete(param)
-	      	type = 'read'
-	    end
-
-	    if type == 'read'
-	    	self.read_last
-	    end
-	  end
+	params, type = cut_param params, 'read'
+	params, way  = cut_param params, 'way'
+	self.read_last way if type == 'read'
   end
 
-  def read_last
+  def read_last way
   	byebug
   	Mail.defaults do
 	  retriever_method :pop3, :address    => "pop.gmail.com",

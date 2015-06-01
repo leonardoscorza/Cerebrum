@@ -12,8 +12,9 @@ end
 #{name.capitalize}.new __dir__"
 
 	config_content  = "configurations:
-	help_message: 'Put here your help message...'
-	action_name: '#{name}'"
+  help_message: 'Put here your help message...'
+  action_name: '#{name}'
+  wiki: 'Write any words about your extension'"
 
 	spec_content = "require 'spec_helper'
 require './actions/extensions/#{name}/#{name}.rb'
