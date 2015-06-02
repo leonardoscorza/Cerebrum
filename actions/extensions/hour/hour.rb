@@ -1,12 +1,18 @@
+require 'tzinfo'
+
 class Hour < BaseModel
 	def interpreter(params, client)
     	if not params.empty?
-    		get_hour params.first, client
+    		get_hour params
     	end
   	end
 
-  	def get_hour place, client
-
+  	def get_hour params ,client=nil
+  		continente = params.shift.capitalize
+  		capital = params.map {|v| v.capitalize}.join('_')
+  		p continente, capital
+  		tz = TZInfo::Timezone.get("#{continente}/#{capital}")
+  		response('console', tz.now)
   	end
 end
 Hour.new __dir__

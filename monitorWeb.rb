@@ -1,9 +1,9 @@
 require 'sinatra'
+require './queue.rb'
+
+$queue = Queue.new
 
 class Monitorweb < Sinatra::Base
-	def interpreter(params, client)
-    	self.run!
-  	end
 
   	configure do
 	  # Roda na inicializaç~ao
@@ -22,27 +22,28 @@ class Monitorweb < Sinatra::Base
 
 	# Before here
 	before do 
-		p 'BEFORE'
+		# p 'BEFORE'
 		# halt 401, 'vamos embora!' PARA REQUISIÇ~AO
 	end
 
 	# After here
 	after do 
-		p 'AFTER'
+		# p 'AFTER'
 	end
 
-	error do
-	   #QUANDO ERROR
-	  'Desculpe, houve um erro desagradável - ' + env['sinatra.error'].name
-	end
-
-	# error MeuErroCustomizado do
-	#   'Então que aconteceu foi...' + env['sinatra.error'].message
-	#   # QUANDO CALL raise MeuErroCustomizado
-	# end
-
-	get '/teste' do
-		Teste.new
+	get '/execute' do
+		if params[:process]
+			$queue.speak('!',params[:process])
+			msg = nil	
+			10.times do
+				sleep(0.1)
+				msg = $queue.listen('console')			
+				break if msg
+			end
+			msg
+		end
 	end
 end
+
 Monitorweb.new
+Monitorweb.run!
