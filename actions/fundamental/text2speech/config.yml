@@ -1,0 +1,4 @@
+configurations:
+  help_message: 'Required: apt-get install espeak, sudo apt-get install lame libmp3lame0'
+  action_name: 'text2speech'
+  wiki: 'Write any words about your extension'

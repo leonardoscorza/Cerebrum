@@ -10,14 +10,14 @@ class Weather < BaseModel
   			results = {
   							temp: self.k_to_c(weather_j['main']['temp']),
   							temp_max: self.k_to_c(weather_j['main']['temp_max']),
-							temp_min: self.k_to_c(weather_j['main']['temp_min']),
-							humidity: weather_j['main']['humidity'],
-							wind_speed: weather_j['wind']['speed'],
-							wind_deg:   weather_j['wind']['deg']
-  			           }
+							  temp_min: self.k_to_c(weather_j['main']['temp_min']),
+							  humidity: weather_j['main']['humidity'],
+							  wind_speed: weather_j['wind']['speed'],
+							  wind_deg:   weather_j['wind']['deg'],
+                country: weather_j['sys']['country']
+  			        }
   			self.response('console',results)
   		rescue Exception => e
-  			p e
   			self.help
   		end
   	end

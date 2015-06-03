@@ -6,14 +6,16 @@ class Broke_captcha < BaseModel
   	end
 
   	def broken_metropolitan_api(urlCaptcha, client)
-	    urlBase = "#{self.configurations[metropolitan_url]}#{urlCaptcha}"
-	    resource = RestClient::Request.execute(:method => :get, :url => urlBase, :headers => {'X-Mashape-Key' => self.configurations['X_Mashape_Key']})
-
+	    urlBase = "#{self.configurations['metropolitan_url']}#{urlCaptcha}"
+	    begin
+	    	resource = RestClient::Request.execute(:method => :get, :url => urlBase, :headers => {'X-Mashape-Key' => self.configurations['X_Mashape_Key']})
+	    rescue Exception => e
+	    	p e
+	    end
+	    p urlBase, :method => :get, :url => urlBase, :headers => {'X-Mashape-Key' => self.configurations['X_Mashape_Key']}
 	    begin
 	    	results = JSON.parse(resource)["captcha"]
-	    	if client == 'console'
-	    		self.response('console',results)
-	    	end
+	    	self.response('console',results)
 	    	results
 	    rescue Exception => e
 	      e

@@ -10,7 +10,6 @@ class Hour < BaseModel
   	def get_hour params ,client=nil
   		continente = params.shift.capitalize
   		capital = params.map {|v| v.capitalize}.join('_')
-  		p continente, capital
   		tz = TZInfo::Timezone.get("#{continente}/#{capital}")
   		response('console', tz.now)
   	end

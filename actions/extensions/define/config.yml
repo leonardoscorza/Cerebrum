@@ -1,0 +1,5 @@
+configurations:
+  help_message: 'Put here your help message...'
+  action_name: 'define'
+  wiki: 'Write any words about your extension'
+  MashapeKey: 'KiXBo8fKMomshjj7AbOwAQ09dcXnp1CJYXxjsniJFdDg8ivPno'
