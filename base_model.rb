@@ -58,6 +58,16 @@ class BaseModel
     true
   end
 
+  def call_service command, params
+    begin
+      result = action_obj(command).interpreter params, nil
+    rescue Exception => e
+      $acessSense.speak('console',"#{Initialize::messages['error_execute']} #{command}")
+      Logger::log e, 'error'
+    end
+    result
+  end
+
   def response client='console', message
     case client
     when 'console'

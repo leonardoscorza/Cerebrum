@@ -1,0 +1,4 @@
+configurations:
+  help_message: 'web tools. to get whois just use: web whois site, to make a ping just call: web ping site'
+  action_name: 'web'
+  wiki: 'Write any words about your extension'

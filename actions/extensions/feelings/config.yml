@@ -1,0 +1,4 @@
+configurations:
+  help_message: 'Analize feelings of texts, just call feelings "your text"'
+  action_name: 'feelings'
+  wiki: ''

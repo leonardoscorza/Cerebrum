@@ -1,0 +1,9 @@
+configurations:
+  help_message: 'Put here your help message...'
+  action_name: 'twitter'
+  wiki: 'Write any words about your extension'
+  consumer_key: "Lou7nrM4B7IKdmf79dMemsHFt"
+  consumer_secret: "ZUbh8S9B9uFb1r8lYsjMvtYoYGcMmLVFdkzTvTbNtI6pvRa31b"
+  access_token: "2376188359-SkM8AFEVHgsjVg1zzqcFhnTNmje7rmaksw5L06Y"
+  access_token_secret: "e8mJiRGLww4n2FL0bg4OMyxRj8dLRwWYJX6db5N5VY4uk"
+  language_default: 'pt'

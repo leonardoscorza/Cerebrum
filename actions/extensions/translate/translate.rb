@@ -5,18 +5,15 @@ class Translate < BaseModel
 	$translateObj = ''
 
 	def interpreter(params, client)
-	    params, special = cut_param params, 'special'
-
-	    if special == "help"
-			self.help __dir__
-		else
-			self.convertText params, client
-		end
+		self.convertText params, client
 	end
 
 	def convertText(params, client)
 	    params, language_from = cut_param params, 'language_from'
 	   	params, language_to   = cut_param params, 'language_to'
+
+	   	language_from = self.configurations['language_from_default'] if language_from == nil
+	    language_to   = self.configurations['language_to_default'] if language_to == nil
 	    
 	    if language_from != nil and language_to != nil
 	    	text = params.join(" ")

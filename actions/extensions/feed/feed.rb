@@ -1,9 +1,15 @@
+require 'feedjira'
+
 class Feed < BaseModel
 	def interpreter(params, client)
     	self.help __dir__
   	end
 
-  	def get key
+  	def get url=ni, key=nil
+      feeds = Feedjira::Feed.fetch_and_parse(url).entries
+      feed.title  
+      feed.url
+      feed.entries 
   	end
 
   	def feed_list

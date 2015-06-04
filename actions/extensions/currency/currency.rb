@@ -3,7 +3,8 @@ require 'rest-client'
 class Currency < BaseModel
 	def interpreter(params, client)
     	if params.shift == 'converter'
-    		self.converter params[0], params[1], params[3]
+        currency_to = (params[2] == 'to')? params[3] : params[2]
+    		self.converter params[0], params[1], currency_to
     		true
     	else
     		false

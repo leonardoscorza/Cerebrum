@@ -2,3 +2,5 @@
 configurations:
   help_message: 'translate any text'
   action_name: 'translate'
+  language_from_default: 'pt'
+  language_to_default: 'en'
