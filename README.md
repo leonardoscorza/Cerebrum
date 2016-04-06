@@ -1,7 +1,5 @@
 This is just any words about the structure
-	
 
-	Note: Todas as classes herdam a BaseModel, e tiram dela as funcoes basicas
 
 
 	The requirements

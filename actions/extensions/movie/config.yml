@@ -1,0 +1,6 @@
+configurations:
+  help_message: 'Put here your help message...'
+  action_name: 'movie'
+  wiki: 'Write any words about your extension'
+  api_key: '94b5b09edb42f5589dadcb112fb59024'
+  language_default: 'pt'

@@ -14,7 +14,8 @@ class Define < BaseModel
     results = RestClient::Request.execute(:method => :get, :url => "https://duckduckgo-duckduckgo-zero-click-info.p.mashape.com/?callback=process_duckduckgo&format=json&no_html=1&no_redirect=1&q=#{params.join(' ')}&skip_disambig=1", :headers => {"X-Mashape-Key" => self.configurations['MashapeKey']})
     partial = JSON.parse((results.sub! 'process_duckduckgo(', '').sub! ');', '')
     if not partial['AbstractText'].empty?
-    	results = "#{partial['AbstractText']} --- <a target='_blank' href=#{partial['AbstractURL']}>Link</a><br><img style='width:300px;' src=#{partial['Image']}>"
+      image = (partial['Image'] != '')? "<img style='width:300px;' src=#{partial['Image']}>": ''
+    	results = "#{partial['AbstractText']} --- <a target='_blank' href=#{partial['AbstractURL']}>Link</a><br> #{image}"
     else
     	results = "I'dont know define this, please try other word(s)"
     end

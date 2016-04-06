@@ -17,7 +17,6 @@ class SentenceSave < BaseModel
   def saveOne(command, client)
     begin
       #Get the current index
-      p "save one"
       indexCurrent = $memory.remember('sentenceSave', {:sentenceHelp => 'index'} )
       #Burn the new sentence
       $memory.burn('sentenceSave',{:sentenceBody => command, :sentenceIndex => (indexCurrent['current'] + 1) })

@@ -1,0 +1,5 @@
+configurations:
+  help_message: 'Put here your help message...'
+  action_name: 'facebook'
+  wiki: 'Write any words about your extension'
+  access_token: 'CAACEdEose0cBAAlUaxceamPSIXhZCqX167b2j6OhwC2mwexcDqZCz0QDNLAYlrfIk35tdcAzXHNdYiHwIQCQs6QY0tBC9fdSHvNF3dHY0PY6PF0cZCZCB7xQqNaXCSQ3rNZAovaMvexAZBrfVZBlA3hjZAjIUbtj1JlZC9OUiJIybjwBkSQBwXEIxLCzwL9ubVZBwC61C18oyk0cEvAfFamZCfw'

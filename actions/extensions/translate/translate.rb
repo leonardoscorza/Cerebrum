@@ -9,8 +9,8 @@ class Translate < BaseModel
 	end
 
 	def convertText(params, client)
-	    params, language_from = cut_param params, 'language_from'
-	   	params, language_to   = cut_param params, 'language_to'
+	    params, language_from = cut_param params, 'from'
+	   	params, language_to   = cut_param params, 'to'
 
 	   	language_from = self.configurations['language_from_default'] if language_from == nil
 	    language_to   = self.configurations['language_to_default'] if language_to == nil

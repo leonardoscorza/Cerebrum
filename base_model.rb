@@ -18,7 +18,7 @@ class BaseModel
     return_word = nil
     if params
       params.each do |param|
-          if param.class == String and param.include? word
+          if param.class == String and param.split(":")[0] == word
             return_word = param.split(":")[1]
             params.delete(param)
           end

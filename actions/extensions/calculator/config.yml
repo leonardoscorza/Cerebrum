@@ -1,0 +1,4 @@
+configurations:
+  help_message: 'Just call: calc 1+2*5%32 :)'
+  action_name: 'calc'
+  wiki: 'Write any words about your extension'

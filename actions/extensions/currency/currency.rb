@@ -12,6 +12,7 @@ class Currency < BaseModel
   	end
 
   	def converter ammount, currency_from, currency_to 
+      p 'aqui', ammount, currency_from, currency_to
 	    results = RestClient::Request.execute(:method => :get, :url => "https://currencyconverter.p.mashape.com/?from=#{currency_from}&from_amount=#{ammount}&to=#{currency_to}", :headers => {"X-Mashape-Key" => self.configurations['MashapeKey']})
 	    partial = JSON.parse(results)["to_amount"]
 	    if not partial.nil?

@@ -1,4 +1,5 @@
 require 'twitter'
+require 'open-uri'
 
 class TwitterCli < BaseModel
 	def client
@@ -76,7 +77,7 @@ class TwitterCli < BaseModel
   	end
 
     def search query, language
-      search = self.client.search("#{query}", result_type: "recent", lang: (language != nil)? language : self.configurations['language_default'] )
+      search = self.client.search("#{URI.escape(query)}", result_type: "recent", lang: (language != nil)? language : self.configurations['language_default'] )
       results = ''
       search.to_h[:statuses].each do |s|
         date = "#{s[:created_at].split(' ')[1]}/#{s[:created_at].split(' ')[2]}/#{s[:created_at].split(' ')[5]} - #{s[:created_at].split(' ')[3]}"
